@@ -24,5 +24,5 @@ isort==6.0.1
 mypy==1.17.1
 mypy_extensions==1.1.0
 pydocstringformatter==0.7.3
-pylint==3.3.7
+pylint==4.0.4
 tox==4.28.4
