@@ -63,7 +63,7 @@ pyasn1-modules>=0.4.2,<1.0.0
 pycodestyle>=2.14.0,<3.0.0
 
 # C parser in Python; required by cffi, which is used by cryptography and other C-extension libraries.
-pycparser>=2.23,<3.0.0
+pycparser>=3.0,<4.0.0
 
 # Static code analysis for Python; used by flake8 for linting.
 pyflakes>=3.4.0,<4.0.0
