@@ -12,7 +12,7 @@ certifi>=2026.10.23,<2027.0.0
 chardet>=7.7.0,<8.0.0
 
 # Indirect dependency, constrained for compatibility. Update as needed.
-charset-normalizer>=3.4.0,<4.0.0
+charset-normalizer>=3.5.2,<4.0.0
 
 # Provides cross-platform colored terminal output; often required by CLI tools (e.g., pytest, click) for Windows compatibility.
 colorama>=0.4.6,<1.0.0
