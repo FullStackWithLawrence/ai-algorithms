@@ -1,36 +1,62 @@
 ---
 #------------------------------------------------------------------------------
 # Lawrence McDaniel - https://lawrencemcdaniel.com
-# Run unit tests for Python code in the repository.
+# Test: every pre-commit hook on every file.
 #
+# This repository has no Python package and no unit tests; its notebooks,
+# docs, requirements and configuration are checked by the hooks in
+# .pre-commit-config.yaml (JSON syntax, notebooks included; YAML and TOML
+# syntax; Prettier; codespell; private keys and AWS credentials; whitespace).
+# It runs them on Python 3.13 with the pre-commit that requirements/local.txt
+# pins. The hooks bring their own environments.
+#
+# Pull requests from forks run here too: pull_request (unlike
+# pull_request_target) runs the pull request's own code without the
+# repository's secrets, which this job doesn't need.
 #------------------------------------------------------------------------------
 name: Test
 
 on:
-  workflow_dispatch:
   pull_request:
-    paths:
-      - "**.py"
   push:
     branches:
       - main
       - next
-    paths:
-      - "**.py"
+  workflow_dispatch:
+
+# A new push to a pull request cancels the run in progress.
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 env:
   python-version: "3.13"
 
 jobs:
-  python-unit-tests:
-    runs-on: ubuntu-latest
+  pre-commit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - name: Checkout code
-        id: checkout
-        uses: actions/checkout@v7
-
-      - name: Run Python tests
-        uses: ./.github/actions/tests/python
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: "${{ env.python-version}}"
-          kaggle-json: "${{ secrets.KAGGLE_JSON }}"
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ env.python-version }}
+
+      - name: Install pre-commit
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install "$(grep -E '^pre-commit==' requirements/local.txt)"
+
+      - name: Run pre-commit hooks
+        shell: bash
+        run: |
+          pre-commit run --all-files --show-diff-on-failure

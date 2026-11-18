@@ -1,0 +1,52 @@
+[project]
+name = "ai-algorithms"
+version = "0.0.0" # semantic-release tracks the real version in git tags and CHANGELOG.md
+requires-python = ">=3.13"
+description = "Jupyter notebook examples of basic AI algorithms in Python"
+authors = [{ name = "Lawrence McDaniel", email = "lpm0073@gmail.com" }]
+license = { file = "LICENSE" }
+keywords = ["AI", "Machine Learning", "Jupyter", "scikit-learn", "Python"]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Natural Language :: English",
+]
+
+[project.urls]
+homepage = "https://github.com/FullStackWithLawrence/ai-algorithms"
+documentation = "https://github.com/FullStackWithLawrence/ai-algorithms"
+repository = "https://github.com/FullStackWithLawrence/ai-algorithms"
+bugtracker = "https://github.com/FullStackWithLawrence/ai-algorithms/issues"
+changelog = "https://github.com/FullStackWithLawrence/ai-algorithms/blob/main/CHANGELOG.md"
+
+# The isort hook in .pre-commit-config.yaml reads this file (--settings-path=pyproject.toml).
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 120
+target-version = ['py313']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.env
+  | venv
+  | node_modules
+  | build
+  | dist
+  | __pypackages__
+  | \.pypi_cache
+  | \.pytest_cache
+  | \.eggs
+  | \.idea
+)/
+'''

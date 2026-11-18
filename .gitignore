@@ -88,3 +88,6 @@ venv3.12
 # ReactJS
 node_modules
 package-lock.json
+
+# Claude Code: personal settings stay local; .claude/skills is committed
+.claude/settings.local.json
