@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "requirements/"
     schedule:
-      interval: "monthly"
+      interval: "quarterly"
     labels:
       - "dependencies"
       - "python"
@@ -15,7 +15,7 @@ updates:
       - "javascript"
       - "automated pr"
     schedule:
-      interval: "monthly"
+      interval: "quarterly"
   - package-ecosystem: "github-actions"
     directory: "/"
     labels:
