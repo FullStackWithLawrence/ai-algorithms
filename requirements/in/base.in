@@ -9,12 +9,12 @@
 
 -r constraints.in
 
-python-dotenv==1.2.1  # for loading environment variables from .env files
-pandas==2.3.3         # for data manipulation
-kaggle==1.7.4.5       # for Kaggle api access
-seaborn==0.13.2       # for data visualization
-scikit-learn==1.7.2   # for machine learning algorithms
-scipy==1.16.3         # for scientific computing
-shap==0.50.0          # for model interpretability
-openpyxl==3.1.5       # for Excel file support from kaggle datasets
-ipykernel==7.1.0      # for Jupyter notebook kernel support
+python-dotenv   # for loading environment variables from .env files
+pandas          # for data manipulation
+kaggle          # for Kaggle api access
+seaborn         # for data visualization
+scikit-learn    # for machine learning algorithms
+scipy           # for scientific computing
+shap            # for model interpretability
+openpyxl        # for Excel file support from kaggle datasets
+ipykernel       # for Jupyter notebook kernel support

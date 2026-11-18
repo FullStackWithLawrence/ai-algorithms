@@ -1,0 +1,2 @@
+[codespell]
+skip=./requirements,./jupyter,./node_modules,./venv
